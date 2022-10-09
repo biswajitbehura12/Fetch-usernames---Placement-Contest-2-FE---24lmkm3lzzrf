@@ -3,7 +3,10 @@ import '../styles/App.css';
 import { useState, useEffect } from 'react';
 const App = () => {
 //code here 
-const [id,setId]=useState("")
+const [id,setId]=useState(1);
+const changeInput=(e)=>{
+  setId(e.target.value);
+}
     
   const [name,setName]=useState(null);
   useEffect(() => {
@@ -23,18 +26,16 @@ const [id,setId]=useState("")
     fetchData();
     
     
-}, []);
+}, [id]);
 
-const changeInput=(e)=>{
-        setId(e.target.value);
-}
+
 
 
 
   return (
     <div className="App">
       <h1 id="text">Type a number between 1 and 10</h1>
-      <input id="input" value={id} onChange={changeInput} />
+      <input id="input"  onChange={changeInput} />
       <p id="name">{name}</p>
     </div>
   );
